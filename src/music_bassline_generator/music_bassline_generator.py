@@ -195,7 +195,6 @@ class Bassline:
         return note.Note(midi_num).pitch.nameWithOctave
 
     def _get_scale_obj(self, tonic, scale_name):
-        # Map scale names to music21 scale classes
         scale_map = {
             'major': scale.MajorScale,
             'minor': scale.MinorScale,
@@ -214,7 +213,7 @@ class Bassline:
     def _get_scale_tones(self, tonic, scale_name):
         try:
             sc = self._get_scale_obj(tonic, scale_name)
-            return [str(p)[:-1] for p in sc.getPitches(tonic + '3', tonic + '3')]
+            return [str(p)[:-1] for p in sc.getPitches(tonic + '3')]
         except Exception:
             return []
 
