@@ -3,7 +3,19 @@ Generate musical basslines
 
 ## DESCRIPTION
 
-TODO
+This class generates randomized basslines based on named chords.
+
+The "formula" implemented by this module is basically: "Play any notes of the chord, modal chord scale, or chord-root scale (and drop any notes replaced by extended jazz chords)."
+
+The chords recognized by this module, are those known to `music21`.
+
+The logic and music theory implemented here, can generate some possibly sour notes. This is an approximate composition tool, and not a drop-in bass player! Import rendered MIDI into a DAW and alter notes until they sound suitable.
+
+Named chords and the `keycenter` use # and b for accidentals.
+
+To constrain the notes to a chosen set of scale degrees, use the `positions` attribute illustrated below.
+
+The one and only public method in this class is `generate()`. Which generates `n` MIDI pitch numbers given a named `chord`. If `next_chord` is `True`, we perform an intersection of the two scales, and replace the final note of the generated phrase with a note of the intersection, if there are notes in common. If the `modal` attribute is set, then the chosen notes will be within the mode given the `keycenter` setting. If it is not set (the default), notes will be chosen as if the key has changed to the current chord.
 
 ## SYNOPSIS
 ```python
