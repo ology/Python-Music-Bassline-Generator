@@ -46,7 +46,6 @@ class Bassline:
                     position = key_notes.index(chord_note)
                 except ValueError:
                     position = 0
-                print("P:",position)
                 return modes[position]
             return fn
         else:
