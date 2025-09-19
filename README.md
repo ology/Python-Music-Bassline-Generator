@@ -34,12 +34,10 @@ bass = Bassline(
     verbose=False, # show progress
 )
 
-bass = Bassline()
 scale = bass.scale_fn('C7b5') # 'major'
 scale = bass.scale_fn('Dm7b5') # 'minor'
 scale = bass.scale_fn('D#/A#') # 'major'
 
-bass = Bassline()
 notes = bass.generate('C7b5', 4)
 notes = bass.generate('D/A', 4)
 notes = bass.generate('D', 4, 'C/G')
