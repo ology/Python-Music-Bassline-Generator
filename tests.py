@@ -7,28 +7,6 @@ class TestMusicBasslineGenerator(unittest.TestCase):
     BOGUS = 'foo'
     VERBOSE = 1
 
-    # def test_invalid_args(self):
-    #     with self.assertRaisesRegex(ValueError, 'not a boolean'):
-    #         Bassline(guitar=self.BOGUS)
-    #     with self.assertRaisesRegex(ValueError, 'not a boolean'):
-    #         Bassline(modal=self.BOGUS)
-    #     with self.assertRaisesRegex(ValueError, 'not a boolean'):
-    #         Bassline(chord_notes=self.BOGUS)
-    #     with self.assertRaisesRegex(ValueError, 'not a boolean'):
-    #         Bassline(tonic=self.BOGUS)
-    #     with self.assertRaisesRegex(ValueError, 'not a boolean'):
-    #         Bassline(verbose=self.BOGUS)
-    #     with self.assertRaisesRegex(ValueError, 'not a valid pitch'):
-    #         Bassline(keycenter=self.BOGUS)
-    #     with self.assertRaisesRegex(TypeError, 'not an array reference'):
-    #         Bassline(intervals=self.BOGUS)
-    #     with self.assertRaisesRegex(ValueError, 'not a positive integer'):
-    #         Bassline(octave=self.BOGUS)
-    #     with self.assertRaisesRegex(TypeError, 'not a code reference'):
-    #         Bassline(scale=self.BOGUS)
-    #     with self.assertRaisesRegex(ValueError, 'not valid'):
-    #         Bassline(wrap=self.BOGUS)
-
     def test_attrs(self):
         obj = Bassline(verbose=self.VERBOSE)
         self.assertEqual(obj.octave, 1)
