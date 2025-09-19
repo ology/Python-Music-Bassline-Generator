@@ -43,7 +43,6 @@ bass = Bassline(
     octave=3,
     wrap='C3',
     modal=True,
-    keycenter='C'
 )
 notes = bass.generate('C', 4)
 
