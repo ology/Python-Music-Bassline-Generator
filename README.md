@@ -1,2 +1,2 @@
-# Python-Music-Bassline-Generator
+# Music Bassline-Generator
 Generate musical basslines
