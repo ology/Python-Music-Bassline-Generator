@@ -207,8 +207,6 @@ class Bassline:
             'aeolian': scale.MinorScale,
             'locrian': scale.LocrianScale,
             'chromatic': scale.ChromaticScale,
-            # 'pentatonic': scale.PentatonicScale,
-            # 'pminor': scale.MinorPentatonicScale,
         }
         cls = scale_map.get(scale_name.lower(), scale.MajorScale)
         return cls(tonic)
