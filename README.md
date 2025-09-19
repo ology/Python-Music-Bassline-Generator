@@ -48,7 +48,7 @@ notes = bass.generate('C', 4)
 
 bass = Bassline(
     chord_notes=False,
-    positions={'major': [0..6], 'minor': [0..6]} # no 7ths!
+    positions={'major': [range(6)], 'minor': [range(6)]} # no 7ths!
 )
 notes = bass.generate('C', 4)
 ```
