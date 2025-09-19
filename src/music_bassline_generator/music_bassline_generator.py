@@ -20,17 +20,17 @@ class Bassline:
         positions=None,
         verbose=False,
     ):
-        self.guitar = bool(guitar)
+        self.guitar = guitar
         self.wrap = wrap
-        self.modal = bool(modal)
-        self.chord_notes = bool(chord_notes)
+        self.modal = modal
+        self.chord_notes = chord_notes
         self.keycenter = keycenter
         self.intervals = intervals if intervals is not None else [-3, -2, -1, 1, 2, 3]
         self.octave = octave
         self.scale_fn = scale_fn or self._default_scale_fn()
-        self.tonic = bool(tonic)
+        self.tonic = tonic
         self.positions = positions
-        self.verbose = bool(verbose)
+        self.verbose = verbose
 
     def _default_scale_fn(self):
         if self.modal:
