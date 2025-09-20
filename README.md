@@ -15,7 +15,7 @@ Named chords and the `keycenter` use # and b for accidentals.
 
 To constrain the notes to a chosen set of scale degrees, use the `positions` attribute illustrated below.
 
-The one and only public method in this class is `generate()`. Which generates `n` MIDI pitch numbers given a named `chord`. If `next_chord` is `True`, we perform an intersection of the two scales, and replace the final note of the generated phrase with a note of the intersection, if there are notes in common. If the `modal` attribute is set, then the chosen notes will be within the mode given the `keycenter` setting. If it is not set (the default), notes will be chosen as if the key has changed to the current chord.
+The one and only public method in this class is `generate()`. Which generates `n` MIDI pitch numbers given a named `chord`. If `format` is set to `ISO`, the method returns named notes. If `next_chord` is `True`, we perform an intersection of the two scales, and replace the final note of the generated phrase with a note of the intersection, if there are notes in common. If the `modal` attribute is set, then the chosen notes will be within the mode given the `keycenter` setting. If it is not set (the default), notes will be chosen as if the key has changed to the current chord.
 
 ## SYNOPSIS
 ```python

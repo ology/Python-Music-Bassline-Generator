@@ -9,16 +9,17 @@ class Bassline:
 
     def __init__(
         self,
-        guitar=False,
-        wrap=None,
+        keycenter='C',
+        octave=1,
         modal=False,
         chord_notes=True,
-        keycenter='C',
         intervals=None,
-        octave=1,
         scale_fn=None,
         tonic=False,
         positions=None,
+        guitar=False,
+        wrap=None,
+        format='midinum', # or 'ISO'
         verbose=False,
     ):
         self.guitar = guitar
@@ -31,6 +32,7 @@ class Bassline:
         self.scale_fn = scale_fn or self._default_scale_fn()
         self.tonic = tonic
         self.positions = positions
+        self.format = format
         self.verbose = verbose
 
     def _default_scale_fn(self):
@@ -181,6 +183,8 @@ class Bassline:
         if self.verbose:
             self._verbose_notes('CHOSEN', chosen)
 
+        if self.format == 'ISO':
+            chosen = [ self._pitchname(n) for n in chosen ]
         return chosen
 
     def _parse_chord(self, chord_name):
