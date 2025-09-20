@@ -34,8 +34,9 @@ class TestMusicBasslineGenerator(unittest.TestCase):
         expect = 24
         got = obj.generate('C', 4)
         self.assertEqual(got[0], expect)
+        obj = Bassline(verbose=self.VERBOSE, resolve=True)
         got = obj.generate('C', 1)
-        self.assertEqual(got[0], expect)
+        self.assertEqual(got[-1], expect)
 
         obj = Bassline(verbose=self.VERBOSE, modal=True)
         expect = 46

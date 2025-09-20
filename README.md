@@ -27,7 +27,7 @@ If `format` is set to `ISO`, this method returns named notes. If the `modal` att
 ```python
 from music_bassline_generator import Bassline
 
-bass = Bassline(
+bass = Bassline( # defaults:
     keycenter='C', # tonic for modal accompaniment
     modal=False, # only choose notes within the mode
     chord_notes=True, # use chord notes outside the scale
@@ -36,6 +36,7 @@ bass = Bassline(
     octave=1, # lowest MIDI octave
     format='midinum', # or 'ISO' for named notes
     tonic=False, # play the first scale note to start the generated phrase
+    resolve=False, # play the first scale note to end the generated phrase
     positions=None, # allowed notes for major and minor scales
     guitar=False, # transpose notes below E1 (midi #28) up an octave
     wrap=None, # transpose notes above this ISO named note, down an octave

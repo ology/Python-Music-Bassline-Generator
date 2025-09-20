@@ -16,6 +16,7 @@ class Bassline:
         intervals=None,
         scale_fn=None,
         tonic=False,
+        resolve=False,
         positions=None,
         guitar=False,
         wrap=None,
@@ -32,6 +33,7 @@ class Bassline:
         self.octave = octave
         self.scale_fn = scale_fn or self._default_scale_fn()
         self.tonic = tonic
+        self.resolve = resolve
         self.positions = positions
         self.format = format
         self.context = context
@@ -175,6 +177,8 @@ class Bassline:
 
         if self.tonic:
             chosen[0] = fixed[0]
+        if self.resolve:
+            chosen[-1] = fixed[0]
 
         if next_chord and next_pitches:
             intersect = list(set(fixed) & set(next_pitches))
