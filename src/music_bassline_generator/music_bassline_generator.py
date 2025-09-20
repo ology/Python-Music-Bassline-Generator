@@ -72,11 +72,12 @@ class Bassline:
 
         if self.verbose:
             print(f"CHORD: {chord_name} => {chord_note}, {flavor}")
-            if next_chord:
-                print(f"NEXT: {next_chord} => {next_chord_note}")
-
+ 
         scale_name = self.scale_fn(chord_name)
         next_scale_name = self.scale_fn(next_chord) if next_chord else None
+
+        if self.verbose:
+            print(f"NEXT: {next_chord} => {next_chord_note} {next_scale_name}")
 
         my_chord = pyChord(chord_name)
         chord_obj = chord.Chord([ c + str(self.octave) for c in my_chord.components() ])
@@ -99,6 +100,9 @@ class Bassline:
         if next_scale_name and next_chord_note:
             next_scale_obj = self._get_scale_obj(next_chord_note, next_scale_name)
             next_pitches = [self._pitchnum(p) for p in next_scale_obj.getPitches(next_chord_note + str(self.octave), next_chord_note + str(self.octave + 1))]
+
+        if self.verbose:
+            print("NEXT PITCHES:", next_pitches)
 
         # Add unique chord notes to the pitches
         if self.chord_notes:
@@ -182,6 +186,7 @@ class Bassline:
 
         if next_chord and next_pitches:
             intersect = list(set(fixed) & set(next_pitches))
+            # print("Fixed:",fixed,"Next:",next_pitches,"Intersect:",intersect)
             if self.verbose:
                 self._verbose_notes('INTERSECT', intersect)
             if intersect:
