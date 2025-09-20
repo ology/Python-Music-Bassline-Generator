@@ -32,7 +32,7 @@ bass = Bassline( # defaults:
     modal=False, # only choose notes within the mode
     chord_notes=True, # use chord notes outside the scale
     intervals=[-3, -2, -1, 1, 2, 3], # allowed voicegen intervals
-    context=None, # note number to start the phrase. None=random
+    context=None, # list of note numbers to start the phrase. None=random
     octave=1, # lowest MIDI octave
     format='midinum', # or 'ISO' for named notes
     tonic=False, # play the first scale note to start the generated phrase
