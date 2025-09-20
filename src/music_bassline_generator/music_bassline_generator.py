@@ -1,5 +1,6 @@
 from music21 import note, chord, scale, pitch
 from music_voicegen import MusicVoiceGen
+from pychord import Chord as pyChord
 import random
 import re
 
@@ -57,7 +58,7 @@ class Bassline:
 
     def generate(self, chord_name='C', n=4, next_chord=None):
         if '/' in chord_name:
-            chord_name = chord_name.split('/')[0]
+            chord_name = chord_name.split('/')[0] # XXX NO
         chord_note, flavor = self._parse_chord(chord_name)
         next_chord_note = None
         if next_chord:
@@ -71,7 +72,8 @@ class Bassline:
         scale_name = self.scale_fn(chord_name)
         next_scale_name = self.scale_fn(next_chord) if next_chord else None
 
-        chord_obj = chord.Chord(self._chord_with_octave(chord_name, self.octave))
+        my_chord = pyChord(chord_name)
+        chord_obj = chord.Chord(my_chord.components())
         notes = [self._pitchnum(n) for n in chord_obj.pitches]
 
         pitches = []
