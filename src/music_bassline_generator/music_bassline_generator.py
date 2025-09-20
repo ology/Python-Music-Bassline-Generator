@@ -20,6 +20,7 @@ class Bassline:
         guitar=False,
         wrap=None,
         format='midinum', # or 'ISO'
+        context=None,
         verbose=False,
     ):
         self.guitar = guitar
@@ -33,6 +34,7 @@ class Bassline:
         self.tonic = tonic
         self.positions = positions
         self.format = format
+        self.context = context
         self.verbose = verbose
 
     def _default_scale_fn(self):
@@ -161,7 +163,10 @@ class Bassline:
         if len(fixed) > 1:
             try:
                 voice = MusicVoiceGen(pitches=fixed, intervals=self.intervals)
-                voice.context([random.choice(fixed)])
+                if not self.context:
+                    voice.context([random.choice(fixed)])
+                else:
+                    voice.context(self.context)
                 chosen = [voice.rand() for _ in range(n)]
             except Exception:
                 chosen = [fixed[0]] * n

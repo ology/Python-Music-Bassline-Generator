@@ -72,7 +72,7 @@ class TestMusicBasslineGenerator(unittest.TestCase):
         obj = Bassline(format="midinum", verbose=self.VERBOSE)
         self.assertRegex(str(obj.generate('C7b5', 4)[0]), r'^\d+$')
         obj = Bassline(format="ISO", verbose=self.VERBOSE)
-        self.assertRegex(str(obj.generate('C7b5', 4)[0]), r'^[A-G][#b]?\d$')
+        self.assertRegex(str(obj.generate('C7b5', 4)[0]), r'^[A-G][#b-]?\d$')
 
 if __name__ == '__main__':
     unittest.main()
