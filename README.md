@@ -82,7 +82,7 @@ bass = Bassline(octave=2)
 num = 4
 
 # Autumn Leaves verse
-for chord in ['Am7','D7','GM7','CM7','F#m7b5','B7','Em','Em']:
+for chord in ['Dm7','G7','CMaj7','FMaj7','B#m7b5','E7#9','Am7','D7']:
     notes = bass.generate(chord, num)
     add_notes(bass_part, notes)
 
@@ -109,8 +109,8 @@ bass = Bassline(modal=True, octave=2)
 
 num = 4
 
-# Autumn Leaves verse
-for my_chord in ['Am7','D7','GM7','CM7','F#m7b5','B7','Em','Em']:
+# Autumn Leaves
+for my_chord in ['Dm7','G7','CMaj7','FMaj7','B#m7b5','E7#9','Am7','D7']:
     c = pyChord(my_chord)
     c = chord.Chord(c.components(), type="whole")
     chord_part.append(c)
