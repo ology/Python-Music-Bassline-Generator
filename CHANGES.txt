@@ -1,3 +1,6 @@
+0.1.20 2025-09-20
+    - And again. Ugh
+
 0.1.19 2025-09-20
     - Fix readme some more...
 
