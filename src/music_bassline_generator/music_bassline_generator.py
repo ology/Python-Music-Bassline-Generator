@@ -139,7 +139,17 @@ class Bassline:
 
         if self.wrap:
             wrap_midi = note.Note(self.wrap).pitch.midi
-            fixed = sorted([p - 12 if p > wrap_midi else p for p in fixed])
+            # fixed = sorted([p - 12 if p > wrap_midi else p for p in fixed])
+            temp = []
+            for p in fixed:
+                if p > wrap_midi:
+                    diff = p - wrap_midi
+                    factor = 12
+                    num = diff // factor
+                    x = p - (factor * (num + 1))
+                    # print(f"w: {wrap_midi}, p: {p}, d: {diff}, n: {num}, x: {x}")
+                    temp.append(x)
+            fixed = sorted(temp)
 
         fixed = sorted(set(fixed))
         if self.verbose:
