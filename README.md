@@ -21,7 +21,7 @@ generate(chord_name='C', n=4, next_chord=None) # defaults
 ```
 This method generates `n` MIDI pitch numbers given a `chord_name`. If `next_chord` is `True`, then `generate()` can be called with a `next_chord="Am7"` type argument, and an intersection of the two scales is performed.
 
-If `format` is set to `ISO`, this method returns named notes. If the `modal` attribute is set, then the chosen notes will be within the mode of the `keycenter` setting. If it is not set (the default), notes will be chosen as if the key has changed to the current chord.
+If `format` is set to `ISO`, this method returns named notes. If the `modal` attribute is set, then the chosen notes will be within the Ionian mode of the `keycenter` setting. If it is not set (the default), notes will be chosen as if the key has changed to the current chord.
 
 ## SYNOPSIS
 ```python
