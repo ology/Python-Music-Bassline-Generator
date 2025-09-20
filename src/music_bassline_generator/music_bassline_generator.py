@@ -75,7 +75,7 @@ class Bassline:
         next_scale_name = self.scale_fn(next_chord) if next_chord else None
 
         my_chord = pyChord(chord_name)
-        chord_obj = chord.Chord(my_chord.components())
+        chord_obj = chord.Chord([ c + str(self.octave) for c in my_chord.components() ])
         notes = [self._pitchnum(n) for n in chord_obj.pitches]
 
         pitches = []
@@ -153,7 +153,7 @@ class Bassline:
                     temp.append(x)
             fixed = sorted(temp)
 
-        fixed = sorted(set(fixed))
+        fixed = sorted(fixed)
         if self.verbose:
             self._verbose_notes('NOTES', fixed)
 
@@ -161,7 +161,7 @@ class Bassline:
         if len(fixed) > 1:
             try:
                 voice = MusicVoiceGen(pitches=fixed, intervals=self.intervals)
-                # voice.context = fixed[random.choice([0,3,4])] # XXX broken?
+                voice.context([random.choice(fixed)])
                 chosen = [voice.rand() for _ in range(n)]
             except Exception:
                 chosen = [fixed[0]] * n
@@ -192,10 +192,6 @@ class Bassline:
         if m:
             return m.group(1), m.group(2)
         return chord_name, ''
-
-    def _chord_with_octave(self, chord_name, octave):
-        root, _ = self._parse_chord(chord_name)
-        return [root + str(octave)]
 
     def _pitchnum(self, p):
         if isinstance(p, pitch.Pitch):
