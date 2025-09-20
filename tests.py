@@ -78,7 +78,6 @@ class TestMusicBasslineGenerator(unittest.TestCase):
     def test_next_chord(self):
         obj = Bassline(format="ISO", verbose=self.VERBOSE)
         got = obj.generate('C', 4, next_chord='Cm')
-        print(got)
         self.assertIn(got[-1], ['C1','D1','F1','G1','C2'])
 
 if __name__ == '__main__':
