@@ -161,7 +161,7 @@ class Bassline:
         if len(fixed) > 1:
             try:
                 voice = MusicVoiceGen(pitches=fixed, intervals=self.intervals)
-                # voice.context = fixed[len(fixed) // 2] # XXX broken?
+                voice.context = fixed[random.choice([0,3,4])]
                 chosen = [voice.rand() for _ in range(n)]
             except Exception:
                 chosen = [fixed[0]] * n
