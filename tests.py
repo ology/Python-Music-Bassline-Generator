@@ -4,7 +4,6 @@ from music_bassline_generator.music_bassline_generator import Bassline
 import unittest
 
 class TestMusicBasslineGenerator(unittest.TestCase):
-    BOGUS = 'foo'
     VERBOSE = False
 
     def test_attrs(self):
