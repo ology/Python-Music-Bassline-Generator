@@ -34,6 +34,7 @@ bass = Bassline(
     intervals=[-3, -2, -1, 1, 2, 3], # allowed voicegen intervals
     context=None, # note number to start the phrase. None=random
     octave=1, # lowest MIDI octave
+    format='midinum', # or 'ISO' for named notes
     tonic=False, # play the first scale note to start the generated phrase
     positions=None, # allowed notes for major and minor scales
     guitar=False, # transpose notes below E1 (midi #28) up an octave
