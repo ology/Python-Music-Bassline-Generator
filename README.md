@@ -7,7 +7,7 @@ This class generates randomized basslines based on named chords.
 
 The "formula" implemented by this module is basically: "Play any notes of the chord, modal chord scale, or chord-root scale (and drop any notes replaced by extended jazz chords)."
 
-The chords recognized by this module, are those known to `music21`.
+The chords recognized by this module, are those known to `pychord`.
 
 The logic and music theory implemented here, can generate some possibly sour notes. This is an approximate composition tool, and not a drop-in bass player! Import rendered MIDI into a DAW and alter notes until they sound suitable.
 
