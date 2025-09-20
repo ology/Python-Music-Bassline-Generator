@@ -11,7 +11,7 @@ The chords recognized by this module, are those known to `pychord`.
 
 The logic and music theory implemented here, can generate some possibly sour notes. This is an approximate composition tool, and not a drop-in bass player! Import rendered MIDI into a DAW and alter notes until they sound suitable.
 
-Named chords and the `keycenter` use # and b for accidentals.
+Named chords and the `keycenter` use `#` and `b` for accidentals.
 
 To constrain the notes to a chosen set of scale degrees, use the `positions` attribute illustrated below.
 
