@@ -1,3 +1,6 @@
+0.2.7 2025-09-20
+    - Add handy next_chord test.
+
 0.2.6 2025-09-20
     - Update readme example with BPM.
 
