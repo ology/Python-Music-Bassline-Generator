@@ -157,7 +157,6 @@ class Bassline:
                     factor = 12
                     num = diff // factor
                     x = p - (factor * (num + 1))
-                    # print(f"w: {wrap_midi}, p: {p}, d: {diff}, n: {num}, x: {x}")
                     temp.append(x)
             fixed = sorted(temp)
 
@@ -186,7 +185,6 @@ class Bassline:
 
         if next_chord and next_pitches:
             intersect = list(set(fixed) & set(next_pitches))
-            # print("Fixed:",fixed,"Next:",next_pitches,"Intersect:",intersect)
             if self.verbose:
                 self._verbose_notes('INTERSECT', intersect)
             if intersect:

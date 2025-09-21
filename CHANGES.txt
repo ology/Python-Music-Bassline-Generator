@@ -1,3 +1,6 @@
+0.2.6 2025-09-20
+    - Update readme example with BPM.
+
 0.2.5 2025-09-20
     - Add full example to the readme.
 
