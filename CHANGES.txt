@@ -1,3 +1,6 @@
+0.2.5 2025-09-20
+    - Add full example to the readme.
+
 0.2.4 2025-09-20
     - Fix readme.
 
