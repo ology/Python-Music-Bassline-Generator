@@ -221,3 +221,7 @@ s.insert(0, chord_part)
 s.insert(0, bass_part)
 s.show()
 ```
+
+## SEE ALSO
+
+https://birka.fhsk.se/wp-content/uploads/2017/02/Autumn-Leaves-in-Am.pdf
