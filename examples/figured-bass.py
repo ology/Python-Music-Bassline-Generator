@@ -1,5 +1,6 @@
 import random
 from random_rhythms import Rhythm
+from music_drummer import Drummer
 # from music_bassline_generator import Bassline
 # author use:
 import sys
