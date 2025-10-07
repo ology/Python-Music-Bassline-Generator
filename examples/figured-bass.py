@@ -7,8 +7,8 @@ import sys
 sys.path.append('./src')
 from music_bassline_generator.music_bassline_generator import Bassline
 
-def section_A(d, fills, lines, section=0):
-    if section == 1:
+def section_A(d, fills, lines, part=0):
+    if part == 1:
         d.note('crash1', 1)
         d.rest('cymbals', 15)
     else:
@@ -35,7 +35,7 @@ def section_A(d, fills, lines, section=0):
         d.note('snare', duration)
     d.rest(['kick', 'hihat'], 2)
 
-def section_B(d, fills, lines, section=0):
+def section_B(d, fills, lines, part=0):
     d.note('crash1', 1)
     d.rest('cymbals', 15)
     d.rest('toms', 14)
