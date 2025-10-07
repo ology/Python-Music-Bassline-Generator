@@ -54,7 +54,7 @@ def section_A(d, fills, pitches, line, chords, part=0):
 def section_B(d, fills, pitches, line, chords, part=0):
     add_bass(line, pitches)
     add_bass(line, pitches)
-    add_bass(line, pitches)
+    add_bass(line, pitches, chords)
     add_bass(line, pitches, chords)
     d.note('crash1', 1)
     d.rest('cymbals', 15)
