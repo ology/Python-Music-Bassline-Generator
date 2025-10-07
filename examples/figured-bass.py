@@ -7,7 +7,7 @@ import sys
 sys.path.append('./src')
 from music_bassline_generator.music_bassline_generator import Bassline
 
-def section_A(section=0):
+def section_A(d, fills, lines, section=0):
     if section == 1:
         d.note('crash1', 1)
         d.rest('cymbals', 15)
@@ -35,7 +35,7 @@ def section_A(section=0):
         d.note('snare', duration)
     d.rest(['kick', 'hihat'], 2)
 
-def section_B():
+def section_B(d, fills, lines, section=0):
     d.note('crash1', 1)
     d.rest('cymbals', 15)
     d.rest('toms', 14)
@@ -66,20 +66,26 @@ def section_B():
     d.rest(['kick', 'hihat'], 2)
 
 if __name__ == "__main__":
-    r = Rhythm(
-        measure_size=2,
-        durations=[1/4, 1/2],
-    )
-    fills = [ r.motif() for x in range(4) ]
-
     d = Drummer()
     d.set_bpm(100)
     d.set_ts()
+    dr = Rhythm(
+        measure_size=2,
+        durations=[1/4, 1/2],
+    )
+    fills = [ dr.motif() for x in range(4) ]
     
-    section_A()
-    section_B()
-    section_B()
-    section_A(1)
+    b = Bassline()
+    br = Rhythm(
+        measure_size=3,
+        durations=[1/2, 1, 3/2],
+    )
+    lines = [ br.motif() for x in range(3) ]
+
+    section_A(d, fills, lines)
+    section_B(d, fills, lines)
+    section_B(d, fills, lines)
+    section_A(d, fills, lines, section=1)
 
     d.sync_parts()
     d.show('midi')
