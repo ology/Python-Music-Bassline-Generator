@@ -20,7 +20,9 @@ def add_bass(b, lines):
         bass_part.append(n)
 
 def section_A(d, fills, b, lines, part=0):
-    add_bass(b, lines)
+    for _ in range(4):
+        add_bass(b, lines)
+        n = note.Rest(type='quarter')
     if part == 1:
         d.note('crash1', 1)
         d.rest('cymbals', 15)
