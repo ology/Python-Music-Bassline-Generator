@@ -96,7 +96,7 @@ if __name__ == "__main__":
         measure_size=2,
         durations=[1/4, 1/2],
     )
-    fills = [ dr.motif() for _ in range(4) ]
+    fills = [ dr.motif() for _ in range(8) ]
     
     b = Bassline(
         modal=True,
@@ -105,13 +105,12 @@ if __name__ == "__main__":
         measure_size=3,
         durations=[1/2, 1, 3/2],
     )
-    lines = [ br.motif() for _ in range(4) ]
-
-    line_a = random.choice(lines)
+    
+    line_a = br.motif()
     chords_a = ['C','Em','F','G','Am']
     chord_a = random.choice(chords_a)
     pitches_a = b.generate(chord_name=chord_a, n=len(line_a))
-    line_b = random.choice(lines)
+    line_b = br.motif()
     chords_b = ['Dm','Em','G','Am','Bm']
     chord_b = random.choice(chords_b)
     pitches_b = b.generate(chord_name=chord_b, n=len(line_b))
