@@ -1,5 +1,5 @@
 import random
-from music21 import duration, note, stream
+from music21 import duration, instrument, note, stream
 from random_rhythms import Rhythm
 from music_drummer import Drummer
 # from music_bassline_generator import Bassline
@@ -79,6 +79,7 @@ def section_B(d, fills, b, lines, part=0):
     d.rest(['kick', 'hihat'], 2)
 
 if __name__ == "__main__":
+    s = stream.Stream()
     bass_part = stream.Part()
 
     d = Drummer()
@@ -105,6 +106,8 @@ if __name__ == "__main__":
     section_A(d, fills, b, lines, part=1)
 
     d.sync_parts()
-    d.score.insert(0, bass_part)
-    d.show('midi')
+    bass_part.insert(0, instrument.Piano())
+    s.insert(0, bass_part)
+    s.insert(0, d.score)
+    s.show('midi')
     # d.write()
