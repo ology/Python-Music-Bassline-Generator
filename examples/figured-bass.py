@@ -1,4 +1,5 @@
 import random
+from music21 import duration, note, stream
 from random_rhythms import Rhythm
 from music_drummer import Drummer
 # from music_bassline_generator import Bassline
@@ -7,7 +8,19 @@ import sys
 sys.path.append('./src')
 from music_bassline_generator.music_bassline_generator import Bassline
 
-def section_A(d, fills, lines, part=0):
+def add_bass(b, lines):
+    line = random.choice(lines)
+    chords = ['C','Em','F','G','Am']
+    chord = random.choice(chords)
+    b.max = len(line)
+    pitches = b.generate()
+    for i,dura in enumerate(line):
+        n = note.Note(pitches[i])
+        n.duration = duration.Duration(dura)
+        bass_part.append(n)
+
+def section_A(d, fills, b, lines, part=0):
+    add_bass(b, lines)
     if part == 1:
         d.note('crash1', 1)
         d.rest('cymbals', 15)
@@ -35,7 +48,7 @@ def section_A(d, fills, lines, part=0):
         d.note('snare', duration)
     d.rest(['kick', 'hihat'], 2)
 
-def section_B(d, fills, lines, part=0):
+def section_B(d, fills, b, lines, part=0):
     d.note('crash1', 1)
     d.rest('cymbals', 15)
     d.rest('toms', 14)
@@ -66,6 +79,8 @@ def section_B(d, fills, lines, part=0):
     d.rest(['kick', 'hihat'], 2)
 
 if __name__ == "__main__":
+    bass_part = stream.Part()
+
     d = Drummer()
     d.set_bpm(100)
     d.set_ts()
@@ -73,20 +88,23 @@ if __name__ == "__main__":
         measure_size=2,
         durations=[1/4, 1/2],
     )
-    fills = [ dr.motif() for x in range(4) ]
+    fills = [ dr.motif() for _ in range(4) ]
     
-    b = Bassline()
+    b = Bassline(
+        modal=True,
+    )
     br = Rhythm(
         measure_size=3,
         durations=[1/2, 1, 3/2],
     )
-    lines = [ br.motif() for x in range(3) ]
+    lines = [ br.motif() for _ in range(3) ]
 
-    section_A(d, fills, lines)
-    section_B(d, fills, lines)
-    section_B(d, fills, lines)
-    section_A(d, fills, lines, part=1)
+    section_A(d, fills, b, lines)
+    section_B(d, fills, b, lines)
+    section_B(d, fills, b, lines)
+    section_A(d, fills, b, lines, part=1)
 
     d.sync_parts()
+    d.score.insert(0, bass_part)
     d.show('midi')
     # d.write()
