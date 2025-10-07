@@ -85,7 +85,7 @@ if __name__ == "__main__":
     section_A(d, fills, lines)
     section_B(d, fills, lines)
     section_B(d, fills, lines)
-    section_A(d, fills, lines, section=1)
+    section_A(d, fills, lines, part=1)
 
     d.sync_parts()
     d.show('midi')
