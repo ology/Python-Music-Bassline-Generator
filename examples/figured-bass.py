@@ -101,7 +101,7 @@ if __name__ == "__main__":
     fills = [ dr.motif() for _ in range(8) ]
     
     b = Bassline(
-        modal=True,
+        # modal=True,
     )
     br = Rhythm(
         measure_size=3,
