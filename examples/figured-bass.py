@@ -12,8 +12,7 @@ def add_bass(b, lines):
     line = random.choice(lines)
     chords = ['C','Em','F','G','Am']
     chord = random.choice(chords)
-    b.max = len(line)
-    pitches = b.generate()
+    pitches = b.generate(chord_name=chord, n=len(line))
     for i,dura in enumerate(line):
         n = note.Note(pitches[i % len(pitches)])
         n.duration = duration.Duration(dura)
