@@ -112,7 +112,7 @@ if __name__ == "__main__":
     chord_a = random.choice(chords_a)
     pitches_a = b.generate(chord_name=chord_a, n=len(line_a))
     line_b = random.choice(lines)
-    chords_b = ['C','Em','F','G','Am']
+    chords_b = ['Dm','Em','G','Am']
     chord_b = random.choice(chords_b)
     pitches_b = b.generate(chord_name=chord_b, n=len(line_b))
 
