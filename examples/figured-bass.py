@@ -15,7 +15,7 @@ def add_bass(b, lines):
     b.max = len(line)
     pitches = b.generate()
     for i,dura in enumerate(line):
-        n = note.Note(pitches[i])
+        n = note.Note(pitches[i % len(pitches)])
         n.duration = duration.Duration(dura)
         bass_part.append(n)
 
