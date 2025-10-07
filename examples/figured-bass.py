@@ -23,6 +23,7 @@ def section_A(d, fills, b, lines, part=0):
     for _ in range(4):
         add_bass(b, lines)
         n = note.Rest(type='quarter')
+        bass_part.append(n)
     if part == 1:
         d.note('crash1', 1)
         d.rest('cymbals', 15)
@@ -51,6 +52,10 @@ def section_A(d, fills, b, lines, part=0):
     d.rest(['kick', 'hihat'], 2)
 
 def section_B(d, fills, b, lines, part=0):
+    for _ in range(4):
+        add_bass(b, lines)
+        n = note.Rest(type='quarter')
+        bass_part.append(n)
     d.note('crash1', 1)
     d.rest('cymbals', 15)
     d.rest('toms', 14)
