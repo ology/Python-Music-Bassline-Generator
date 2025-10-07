@@ -8,8 +8,10 @@ import sys
 sys.path.append('./src')
 from music_bassline_generator.music_bassline_generator import Bassline
 
-def add_bass(line, pitches, chords=[]):
+def add_bass(line, pitches, chords=[], rhythm=None):
     if len(chords) > 0:
+        if rhythm:
+            line = rhythm.motif()
         chord = random.choice(chords)
         pitches = b.generate(chord_name=chord, n=len(line))
     for i,dura in enumerate(line):
@@ -19,11 +21,11 @@ def add_bass(line, pitches, chords=[]):
     n = note.Rest(type='quarter')
     bass_part.append(n)
 
-def section_A(d, fills, pitches, line, chords, part=0):
+def section_A(d, fills, pitches, line, chords, rhythm=None, part=0):
     add_bass(line, pitches)
     add_bass(line, pitches)
     add_bass(line, pitches)
-    add_bass(line, pitches, chords)
+    add_bass(line, pitches, chords, rhythm)
     if part == 1:
         d.note('crash1', 1)
         d.rest('cymbals', 15)
@@ -51,11 +53,11 @@ def section_A(d, fills, pitches, line, chords, part=0):
         d.note('snare', duration)
     d.rest(['kick', 'hihat'], 2)
 
-def section_B(d, fills, pitches, line, chords, part=0):
+def section_B(d, fills, pitches, line, chords, rhythm=None, part=0):
     add_bass(line, pitches)
     add_bass(line, pitches)
-    add_bass(line, pitches, chords)
-    add_bass(line, pitches, chords)
+    add_bass(line, pitches, chords, rhythm)
+    add_bass(line, pitches, chords, rhythm)
     d.note('crash1', 1)
     d.rest('cymbals', 15)
     d.rest('toms', 14)
@@ -103,7 +105,7 @@ if __name__ == "__main__":
     )
     br = Rhythm(
         measure_size=3,
-        durations=[1/2, 1, 3/2],
+        durations=[1/4, 1/2, 1, 3/2],
     )    
     line_a = br.motif()
     chords_a = ['C','Em','F','G','Am']
@@ -114,10 +116,10 @@ if __name__ == "__main__":
     chord_b = random.choice(chords_b)
     pitches_b = b.generate(chord_name=chord_b, n=len(line_b))
 
-    section_A(d, fills, pitches_a, line_a, chords_a)
-    section_B(d, fills, pitches_a, line_a, chords_a)
-    section_B(d, fills, pitches_b, line_b, chords_b)
-    section_A(d, fills, pitches_a, line_a, chords_a, part=1)
+    section_A(d, fills, pitches_a, line_a, chords_a, rhythm=br)
+    section_B(d, fills, pitches_a, line_a, chords_a, rhythm=br)
+    section_B(d, fills, pitches_b, line_b, chords_b, rhythm=br)
+    section_A(d, fills, pitches_a, line_a, chords_a, rhythm=br, part=1)
 
     d.sync_parts()
     bass_part.insert(0, instrument.Piano())
