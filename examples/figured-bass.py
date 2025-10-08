@@ -105,7 +105,7 @@ if __name__ == "__main__":
     )
     br = Rhythm(
         measure_size=3,
-        durations=[1/4, 1/2, 1, 3/2],
+        durations=[1/2, 1, 3/2],
     )    
     line_a = br.motif()
     chords_a = ['C','Em','F','G','Am']
