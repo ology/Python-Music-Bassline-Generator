@@ -19,13 +19,14 @@ def add_bass(line, pitches, chords=[], rhythm=None):
         n = note.Note(pitches[i % len(pitches)])
         n.duration = duration.Duration(dura)
         bass_part.append(n)
-    n = note.Rest(type='quarter')
-    bass_part.append(n)
+    if sum(line) == 3:
+        n = note.Rest(type='quarter')
+        bass_part.append(n)
 
 def section_A(d, fills, pitches, line, chords, rhythm=None, part=0):
-    add_bass(line, pitches)
-    add_bass(line, pitches)
-    add_bass(line, pitches)
+    add_bass(line, pitches, [], None)
+    add_bass(line, pitches, [], None)
+    add_bass(line, pitches, [], None)
     add_bass(line, pitches, chords, rhythm)
     if part == 1:
         d.note('crash1', 1)
@@ -55,8 +56,9 @@ def section_A(d, fills, pitches, line, chords, rhythm=None, part=0):
     d.rest(['kick', 'hihat'], 2)
 
 def section_B(d, fills, pitches, line, chords, rhythm=None, part=0):
-    add_bass(line, pitches)
-    add_bass(line, pitches)
+    rest = False if part == 1 else True
+    add_bass(line, pitches, [], None)
+    add_bass(line, pitches, [], None)
     add_bass(line, pitches, chords, rhythm)
     add_bass(line, pitches, chords, rhythm)
     d.note('crash1', 1)
@@ -112,6 +114,7 @@ if __name__ == "__main__":
     chords_a = ['C','Em','F','G','Am']
     chord_a = random.choice(chords_a)
     pitches_a = b.generate(chord_name=chord_a, n=len(line_a))
+    br.measure_size = 4
     line_b = br.motif()
     chords_b = ['Dm','Em','G','Am','Bm']
     chord_b = random.choice(chords_b)
@@ -119,7 +122,7 @@ if __name__ == "__main__":
 
     section_A(d, fills, pitches_a, line_a, chords_a, rhythm=br)
     section_B(d, fills, pitches_a, line_a, chords_a, rhythm=br)
-    section_B(d, fills, pitches_b, line_b, chords_b, rhythm=br)
+    section_B(d, fills, pitches_b, line_b, chords_b, rhythm=br, part=1)
     section_A(d, fills, pitches_a, line_a, chords_a, rhythm=br, part=1)
 
     d.sync_parts()
