@@ -105,6 +105,7 @@ if __name__ == "__main__":
     
     b = Bassline(
         # modal=True,
+        intervals=[-12,-7,-5,-4,-3,-2,-1,1,2,3,4,5,7,12]
     )
     br = Rhythm(
         measure_size=3,
