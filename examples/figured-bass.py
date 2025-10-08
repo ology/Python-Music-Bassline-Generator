@@ -56,10 +56,9 @@ def section_A(d, fills, pitches, line, chords, rhythm=None, part=0):
     d.rest(['kick', 'hihat'], 2)
 
 def section_B(d, fills, pitches, line, chords, rhythm=None, part=0):
-    rest = False if part == 1 else True
     add_bass(line, pitches, [], None)
     add_bass(line, pitches, [], None)
-    add_bass(line, pitches, chords, rhythm)
+    add_bass(line, pitches, chords, None)
     add_bass(line, pitches, chords, rhythm)
     d.note('crash1', 1)
     d.rest('cymbals', 15)
