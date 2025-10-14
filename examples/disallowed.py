@@ -1,12 +1,12 @@
 from music21 import chord, note, stream, tempo
 from pychord import Chord as pyChord
 from chord_progression_network import Generator
-# if author:
-import sys
-sys.path.append('./src')
-from music_bassline_generator.music_bassline_generator import Bassline
-# else:
-# from music_bassline_generator import Bassline
+try:
+    import sys
+    sys.path.append('./src')
+    from music_bassline_generator.music_bassline_generator import Bassline
+except ImportError:
+    from music_bassline_generator import Bassline
 
 s = stream.Stream()
 bass_part = stream.Part()
