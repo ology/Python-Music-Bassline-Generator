@@ -10,7 +10,7 @@ from music_bassline_generator.music_bassline_generator import Bassline
 
 s = stream.Stream()
 bass_part = stream.Part()
-# chord_part = stream.Part()
+chord_part = stream.Part()
 
 def add_notes(p=None, notes=[], type='quarter'):
     for n in notes:
@@ -43,7 +43,7 @@ phrase = g.generate()
 bass = Bassline(
     modal=True,
     octave=2,
-    tonic=True,
+    tonic=False,
     resolve=False,
     # guitar=True,
 )
@@ -53,11 +53,11 @@ num = 4
 for my_chord in phrase:
     c = pyChord(my_chord)
     c = chord.Chord(c.components(), type='whole')
-    # chord_part.append(c)
+    chord_part.append(c)
     notes = bass.generate(my_chord, num)
     add_notes(bass_part, notes)
 
 s.append(tempo.MetronomeMark(number=90))
-# s.insert(0, chord_part)
+s.insert(0, chord_part)
 s.insert(0, bass_part)
 s.show('midi')
