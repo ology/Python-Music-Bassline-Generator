@@ -14,11 +14,7 @@ chord_part = stream.Part()
 
 def add_notes(p=None, notes=[], type='quarter'):
     for n in notes:
-        if type == 'dotted_half':
-            n = note.Note(n)
-            n.quarterLength = 3
-        else:
-            n = note.Note(n, type=type)
+        n = note.Note(n, type=type)
         p.append(n)
 
 weights = [ 1 for _ in range(1,5) ]
