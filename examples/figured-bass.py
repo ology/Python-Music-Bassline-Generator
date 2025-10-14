@@ -2,12 +2,12 @@ import random
 from music21 import duration, instrument, note, stream
 from random_rhythms import Rhythm
 from music_drummer import Drummer
-# if author:
-import sys
-sys.path.append('./src')
-from music_bassline_generator.music_bassline_generator import Bassline
-# else:
-# from music_bassline_generator import Bassline
+try:
+    import sys
+    sys.path.append('./src')
+    from music_bassline_generator.music_bassline_generator import Bassline
+except ImportError:
+    from music_bassline_generator import Bassline
 
 def add_bass(line, pitches, chords=[], rhythm=None):
     if len(chords) > 0:
