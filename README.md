@@ -31,7 +31,7 @@ bass = Bassline( # defaults:
     keycenter='C', # tonic for modal accompaniment
     modal=False, # only choose notes within the mode
     chord_notes=True, # use chord notes outside the scale
-    intervals=[-3, -2, -1, 1, 2, 3], # allowed voicegen intervals
+    intervals=[-7, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 7], # voicegen allowed intervals
     context=None, # list of note numbers to start the phrase. None=random
     octave=1, # lowest MIDI octave
     format='midinum', # or 'ISO' for named notes
