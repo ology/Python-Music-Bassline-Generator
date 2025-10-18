@@ -1,3 +1,6 @@
+0.2.8 2025-10-17
+    - Expand the default intervals.
+
 0.2.7 2025-09-20
     - Add handy next_chord test.
 

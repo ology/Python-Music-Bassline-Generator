@@ -9,7 +9,7 @@ class TestMusicBasslineGenerator(unittest.TestCase):
     def test_attrs(self):
         obj = Bassline(verbose=self.VERBOSE)
         self.assertEqual(obj.octave, 1)
-        self.assertEqual(obj.intervals, [-3, -2, -1, 1, 2, 3])
+        self.assertEqual(obj.intervals, [-7,-5,-4,-3, -2, -1, 1, 2, 3,4,5,7])
         self.assertTrue(callable(obj.scale_fn))
 
     def test_scale(self):

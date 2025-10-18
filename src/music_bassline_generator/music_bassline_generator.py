@@ -29,9 +29,9 @@ class Bassline:
         self.modal = modal
         self.chord_notes = chord_notes
         self.keycenter = keycenter
-        self.intervals = intervals if intervals is not None else [-3, -2, -1, 1, 2, 3]
         self.octave = octave
-        self.scale_fn = scale_fn or self._default_scale_fn()
+        self.intervals = intervals if intervals is not None else [-7, -5, -4, -3, -2, -1, 1, 2, 3, 4, 5, 7]
+        self.scale_fn = scale_fn if scale_fn is not None else self._default_scale_fn()
         self.tonic = tonic
         self.resolve = resolve
         self.positions = positions
@@ -87,6 +87,7 @@ class Bassline:
         if self.positions and scale_name:
             scale_obj = self._get_scale_obj(chord_note, scale_name)
             scale_pitches = [self._pitchnum(p) for p in scale_obj.getPitches(chord_note + str(self.octave), chord_note + str(self.octave + 1))]
+            # print('N:',chord_note,'S:',scale_name,'O:',scale_obj,'P:',scale_pitches)
             for idx, p in enumerate(scale_pitches):
                 if idx in self.positions.get(scale_name, []):
                     pitches.append(p)
